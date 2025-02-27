@@ -5,15 +5,69 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\Graphics">
+      <UniqueIdentifier>{4f54d640-c5ad-4a25-9a73-b3af6bf4f124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Audio">
+      <UniqueIdentifier>{e1d30e0a-38e9-43a3-9ce8-9b14aae0a4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Core">
+      <UniqueIdentifier>{6255913d-7391-4aa2-a90e-cb2742e4021c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{f82f4556-8b95-4742-95ad-3fcf35c6bc88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utils">
+      <UniqueIdentifier>{1300a116-d336-4cb2-ad9d-00c73315e706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{bb4a4a47-3b3e-4ccf-bb55-3338bce5c821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shaders">
+      <UniqueIdentifier>{8ddcf461-2e7a-41cc-b204-a2c98fb85255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI">
+      <UniqueIdentifier>{bfdb258a-c424-4733-8749-69c93018ae85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\CTextureLoader.cpp">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\CTexture.cpp">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\CTextureManager.cpp">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\CApplication.cpp">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\CEngine.cpp">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Define.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\CTextureLoader.h">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\CTexture.h">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\CTextureManager.h">
+      <Filter>ソース ファイル\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\CApplication.h">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\CEngine.h">
+      <Filter>ソース ファイル\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

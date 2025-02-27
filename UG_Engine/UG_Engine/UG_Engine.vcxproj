@@ -19,10 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\CApplication.cpp" />
+    <ClCompile Include="src\Core\CEngine.cpp" />
+    <ClCompile Include="src\Graphics\CTexture.cpp" />
+    <ClCompile Include="src\Graphics\CTextureLoader.cpp" />
+    <ClCompile Include="src\Graphics\CTextureManager.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\CApplication.h" />
+    <ClInclude Include="src\Core\CEngine.h" />
     <ClInclude Include="src\Define.h" />
+    <ClInclude Include="src\Graphics\CTexture.h" />
+    <ClInclude Include="src\Graphics\CTextureLoader.h" />
+    <ClInclude Include="src\Graphics\CTextureManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -94,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um;$(ProjectDir)src;$(ProjectDir)include\directX</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um;$(ProjectDir)include\DirectX;$(ProjectDir)include\DirectXTex;$(ProjectDir)src;$(ProjectDir)src\Audio;$(ProjectDir)src\Core;$(ProjectDir)src\Game;$(ProjectDir)src\Graphics;$(ProjectDir)src\Input;$(ProjectDir)src\Shaders;$(ProjectDir)src\UI;$(ProjectDir)src\Utils</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>Define.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -112,7 +122,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ForcedIncludeFiles>Define.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um;$(ProjectDir)src;$(ProjectDir)include\directX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um;$(ProjectDir)include\DirectX;$(ProjectDir)include\DirectXTex;$(ProjectDir)src;$(ProjectDir)src\Audio;$(ProjectDir)src\Core;$(ProjectDir)src\Game;$(ProjectDir)src\Graphics;$(ProjectDir)src\Input;$(ProjectDir)src\Shaders;$(ProjectDir)src\UI;$(ProjectDir)src\Utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
