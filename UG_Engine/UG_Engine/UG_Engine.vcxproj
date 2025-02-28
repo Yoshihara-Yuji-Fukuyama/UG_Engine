@@ -138,10 +138,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <ForcedIncludeFiles>Define.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\Audio;$(ProjectDir)src\Core;$(ProjectDir)src\Game;$(ProjectDir)src\Graphics;$(ProjectDir)src\Input;$(ProjectDir)src\Shaders;$(ProjectDir)src\UI;$(ProjectDir)src\Utils;$(ProjectDir)include\DirectX;$(ProjectDir)include\DirectXTex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)include\DirectXTex\Bin\Desctop_2019_Win10\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,12 +155,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\Audio;$(ProjectDir)src\Core;$(ProjectDir)src\Game;$(ProjectDir)src\Graphics;$(ProjectDir)src\Input;$(ProjectDir)src\Shaders;$(ProjectDir)src\UI;$(ProjectDir)src\Utils;$(ProjectDir)include\DirectX;$(ProjectDir)include\DirectXTex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>Define.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)include\DirectXTex\Bin\Desctop_2019_Win10\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

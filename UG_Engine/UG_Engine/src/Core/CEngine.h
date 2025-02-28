@@ -3,6 +3,10 @@
 #include <dxgi.h>			// DXGIの基本機能
 #include <dxgi1_4.h>		// DXGI 1.4の拡張
 
+#pragma comment(lib, "d3d12.lib")	// d3d12ライブラリをリンク
+#pragma comment(lib, "dxgi.lib")	// dxgiライブラリをリンク
+
+// 描画エンジン
 class CEngine
 {
 	// 定数
@@ -38,7 +42,8 @@ private:
 	bool CreateCommandQueue();
 	// スワップチェインを生成
 	bool CreateSwapChain();
-	// コマンドリストとコマンドアロケータを生成
+	// コマンドリスト）と
+	// コマンドアロケータ（コマンドリストのメモリ管理するもの）を生成
 	bool CreateCommandList();
 	// フェンスを生成
 	bool CreateFence();
@@ -71,9 +76,9 @@ private:
 	ComPtr<ID3D12Fence> mpFence = nullptr;
 	// フェンスの値（ダブルバッファリング用に2個）
 	UINT64 mFenceValue[FRAME_BUFFER_COUNT];
-	// ビューポート
+	// ビューポート（レンダリング結果をどう表示するかの設定）
 	D3D12_VIEWPORT mViewport;
-	// シザー短形
+	// シザー短形（どこからどこまでを画面に映すかの設定）
 	D3D12_RECT mScissor;
 
 
@@ -81,22 +86,22 @@ private:
 private:
 	// レンダーターゲットを生成
 	bool CreateRenderTarget();	
-	// 震度ステンシルバッファを生成
+	// 深度ステンシルバッファを生成
 	bool CreateDepthStencil();
 
 	// レンダーターゲットビューのディスクリプタサイズ
 	UINT mRtvDescriptorSize = 0;
 	// レンダーターゲットのディスクリプタヒープ（レンダーターゲットビューの管理）
-	ComPtr<ID3D12DescriptorHeap>mRtvHeap = nullptr;
+	ComPtr<ID3D12DescriptorHeap>mpRtvHeap = nullptr;
 	// レンダーターゲット（ダブルバッファリングするので2個）
-	ComPtr<ID3D12Resource> mRenderTargets[FRAME_BUFFER_COUNT] = { nullptr };
+	ComPtr<ID3D12Resource> mpRenderTargets[FRAME_BUFFER_COUNT] = { nullptr };
 
-	// 震度ステンシルのディスクリプタ―サイズ
+	// 深度ステンシルのディスクリプタ―サイズ
 	UINT mDsvDescriptorSize = 0;
-	// 震度ステンシルのディスクリプタヒープ（震度ステンシルの管理）
-	ComPtr<ID3D12DescriptorHeap> mDsvHeap = nullptr;
-	// 震度ステンシルバッファ（こっちは1個でいい）
-	ComPtr<ID3D12Resource> mDepthStencilBuffer = nullptr;
+	// 深度ステンシルのディスクリプタヒープ（深度ステンシルの管理）
+	ComPtr<ID3D12DescriptorHeap> mpDsvHeap = nullptr;
+	// 深度ステンシルバッファ（こっちは1個でいい）
+	ComPtr<ID3D12Resource> mpDepthStencilBuffer = nullptr;
 
 
 	// 描画ループで使用

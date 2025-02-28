@@ -1,6 +1,4 @@
 /UG_Engine/.vs
-/UG_Engine/Debug
-/UG_Engine/Release
-/UG_Engine/UG_Engine/Debug
-/UG_Engine/UG_Engine/Release
 /UG_Engine/UG_Engine/*.user
+/UG_Engine/x64
+/UG_Engine/UG_Engine/x64
