@@ -70,33 +70,106 @@ bool CEngine::Init(HWND hwnd, UINT windowWidth, UINT windowHeight)
 // 描画の開始
 void CEngine::BeginRender()
 {
+	// 現在のレンダーターゲットを更新
+	mpCurrentRenderTarget = mpRenderTargets[mCurrentBackBufferIndex].Get();
+
+	// コマンドを初期化してためる準備をする
+	mpAllocator[mCurrentBackBufferIndex]->Reset();
+	mpCommandList->Reset(mpAllocator[mCurrentBackBufferIndex].Get(), nullptr);
+
+	// ビューポートとシザー短形を設定
+	mpCommandList->RSSetViewports(1, &mViewport);
+	mpCommandList->RSSetScissorRects(1, &mScissor);
+
+	// 現在のフレームのレンダーターゲットビューのディスクリプタヒープの開始アドレスを取得
+	auto currentRtvHandle = mpRtvHeap->GetCPUDescriptorHandleForHeapStart();
+	currentRtvHandle.ptr += mCurrentBackBufferIndex * mRtvDescriptorSize;
+
+	// 深度ステンシルのディスクリプタヒープの開始アドレスを取得
+	auto currentDsvHandle = mpDsvHeap->GetCPUDescriptorHandleForHeapStart();
+
+	// レンダーターゲットが使用可能になるまで待つ
+	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(mpCurrentRenderTarget,
+		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
+
+	// レンダーターゲットを設定
+	mpCommandList->OMSetRenderTargets(1, &currentRtvHandle, FALSE, &currentDsvHandle);
+
+	// レンダーターゲットをクリア
+	const float clearColor[] = { 0.25f,0.25f,0.25f,1.0f };
+	mpCommandList->ClearRenderTargetView(currentRtvHandle, clearColor, 0, nullptr);
+
+	// 深度ステンシルビューをクリア
+	mpCommandList->ClearDepthStencilView(currentDsvHandle, 
+		D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
 
 // 描画の終了
 void CEngine::EndRender()
 {
+	// レンダーターゲットに書き込み終わるまで待つ
+	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(mpCurrentRenderTarget,
+		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+	mpCommandList->ResourceBarrier(1, &barrier);
+
+	// コマンドの記録を終了
+	mpCommandList->Close();
+
+	// コマンドを実行
+	ID3D12CommandList* CmdLists[]{ mpCommandList.Get() };
+	mpQueue->ExecuteCommandLists(1, CmdLists);
+
+	// スワップチェインを切り替え
+	mpSwapChain->Present(1, 0);
+
+	// 描画完了を待つ
+	WaitRender();
+
+	// バックバッファ番号更新
+	mCurrentBackBufferIndex = mpSwapChain->GetCurrentBackBufferIndex();
 }
 
 // 描画完了を待つ処理
 void CEngine::WaitRender()
 {
+	// 描画終了待ち
+	const UINT64 fenceValue = mFenceValue[mCurrentBackBufferIndex];
+	mpQueue->Signal(mpFence.Get(), fenceValue);
+	mFenceValue[mCurrentBackBufferIndex]++;
+
+	// 次のフレームの描画準備がまだであれば待機する
+	if (mpFence->GetCompletedValue() < fenceValue)
+	{
+		// 完了時にイベントを設定
+		HRESULT hr = mpFence->SetEventOnCompletion(fenceValue, mFenceEvent);
+		if (FAILED(hr))
+		{
+			return;
+		}
+
+		// 待機処理
+		if (WAIT_OBJECT_0 != WaitForSingleObjectEx(mFenceEvent, INFINITE, FALSE))
+		{
+			return;
+		}
+	}
 }
 
 // デバイスを取得
 ID3D12Device6* CEngine::GetDevice()
 {
-	return nullptr;
+	return mpDevice.Get();
 }
 
 // コマンドリストを取得
 ID3D12GraphicsCommandList* CEngine::GetCommandList()
 {
-	return nullptr;
+	return mpCommandList.Get();
 }
 
 UINT CEngine::CurrentBackBufferIndex()
 {
-	return 0;
+	return mCurrentBackBufferIndex;
 }
 
 // デバイスを生成

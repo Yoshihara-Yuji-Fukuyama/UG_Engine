@@ -6,7 +6,7 @@
 #pragma comment(lib, "d3d12.lib")	// d3d12ライブラリをリンク
 #pragma comment(lib, "dxgi.lib")	// dxgiライブラリをリンク
 
-// 描画エンジン
+// 描画の基盤部分のクラス
 class CEngine
 {
 	// 定数
@@ -107,7 +107,7 @@ private:
 	// 描画ループで使用
 private:
 	// 現在のフレームのレンダーターゲットを一時的に保存する変数
-	ID3D12Resource* mCurrentRenderTarget = nullptr;
+	ID3D12Resource* mpCurrentRenderTarget = nullptr;
 	// 描画完了を待つ処理
 	void WaitRender();
 

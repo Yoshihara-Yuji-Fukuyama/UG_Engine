@@ -1,6 +1,7 @@
-#include "CApplication.h"
+#include "Application.h"
 #include <iostream>
 #include "CEngine.h"
+#include "CEngine3D.h"
 
 // グローバル変数
 
@@ -119,7 +120,14 @@ void MainLoop()
 		}
 		else
 		{
-			// 描画処理
+			// 更新
+			gEngine3D->Update();
+			// 描画開始
+			gEngine->BeginRender();
+			// 描画
+			gEngine3D->Render();
+			// 描画終了
+			gEngine->EndRender();
 		}
 	}
 }
@@ -137,8 +145,12 @@ void StartApp(const TCHAR* appName)
 		return;
 	}
 
-
-	// TODO:3Dモデルの初期化
+	// 描画エンジン3Dの初期化
+	gEngine3D = new CEngine3D();
+	if (!gEngine3D->Init())
+	{
+		return;
+	}
 
 	// メイン処理ループ
 	MainLoop();

@@ -43,11 +43,20 @@
     <ClCompile Include="src\Graphics\CTextureManager.cpp">
       <Filter>ソース ファイル\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\CApplication.cpp">
+    <ClCompile Include="src\Core\Application.cpp">
       <Filter>ソース ファイル\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\CEngine.cpp">
       <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\CEngine3D.cpp">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaders\CVertexBuffer.cpp">
+      <Filter>ソース ファイル\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaders\CConstantBuffer.cpp">
+      <Filter>ソース ファイル\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +72,23 @@
     <ClInclude Include="src\Graphics\CTextureManager.h">
       <Filter>ソース ファイル\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\CApplication.h">
+    <ClInclude Include="src\Core\Application.h">
       <Filter>ソース ファイル\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\CEngine.h">
       <Filter>ソース ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\CEngine3D.h">
+      <Filter>ソース ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaders\CSharedStruct.h">
+      <Filter>ソース ファイル\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaders\CVertexBuffer.h">
+      <Filter>ソース ファイル\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaders\CConstantBuffer.h">
+      <Filter>ソース ファイル\Shaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

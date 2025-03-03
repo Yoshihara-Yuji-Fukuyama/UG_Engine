@@ -1,4 +1,4 @@
-#include "CApplication.h"
+#include "Application.h"
 #include <iostream>
 
 #include <DirectXTex.h>

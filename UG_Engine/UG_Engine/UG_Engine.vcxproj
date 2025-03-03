@@ -19,20 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\CApplication.cpp" />
+    <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\CEngine.cpp" />
+    <ClCompile Include="src\Core\CEngine3D.cpp" />
     <ClCompile Include="src\Graphics\CTexture.cpp" />
     <ClCompile Include="src\Graphics\CTextureLoader.cpp" />
     <ClCompile Include="src\Graphics\CTextureManager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Shaders\CConstantBuffer.cpp" />
+    <ClCompile Include="src\Shaders\CVertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\CApplication.h" />
+    <ClInclude Include="src\Core\CEngine3D.h" />
+    <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\CEngine.h" />
     <ClInclude Include="src\Define.h" />
     <ClInclude Include="src\Graphics\CTexture.h" />
     <ClInclude Include="src\Graphics\CTextureLoader.h" />
     <ClInclude Include="src\Graphics\CTextureManager.h" />
+    <ClInclude Include="src\Shaders\CConstantBuffer.h" />
+    <ClInclude Include="src\Shaders\CSharedStruct.h" />
+    <ClInclude Include="src\Shaders\CVertexBuffer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

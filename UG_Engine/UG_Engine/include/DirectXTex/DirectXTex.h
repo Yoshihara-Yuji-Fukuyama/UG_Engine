@@ -62,7 +62,7 @@ namespace DirectX
 
     //---------------------------------------------------------------------------------
     // DXGI Format Utilities
-    DIRECTX_TEX_API constexpr bool __cdecl IsValid(_In_ DXGI_FORMAT fmt) noexcept;
+    DIRECTX_TEX_API constexpr bool __cdecl IsCreated(_In_ DXGI_FORMAT fmt) noexcept;
     DIRECTX_TEX_API bool __cdecl IsCompressed(_In_ DXGI_FORMAT fmt) noexcept;
     DIRECTX_TEX_API bool __cdecl IsPacked(_In_ DXGI_FORMAT fmt) noexcept;
     DIRECTX_TEX_API bool __cdecl IsVideo(_In_ DXGI_FORMAT fmt) noexcept;
